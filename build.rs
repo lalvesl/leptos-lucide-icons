@@ -20,7 +20,7 @@ fn main() -> io::Result<()> {
             let path = entry.path();
             if path.extension().and_then(|ext| ext.to_str()) == Some("svg") {
                 let file_stem = path.file_stem().unwrap().to_str().unwrap();
-                let component_name = format_ident!("{}", file_stem.to_pascal_case());
+                let component_name = format_ident!("Icon{}", file_stem.to_pascal_case());
 
                 let re = Regex::new(r"(?s)<svg[^>]*>(.*?)</svg>").unwrap();
                 let svg = fs::read_to_string(path).unwrap();
